@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ffffff">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A learn-by-playing journey through Amitav Ghosh's The Great Derangement." />
+  <title>The Great Derangement | An interactive learning journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="rail">
+      <div class="brand-mark" aria-label="The Great Derangement">
+        <span class="brand-leaf">✦</span>
+        <span class="brand-name">TGD<span>.</span></span>
+      </div>
+      <div class="rail-rule"></div>
+      <div class="journey-label">YOUR JOURNEY</div>
+      <nav id="journeyNav" class="journey-nav" aria-label="Journey sections"></nav>
+      <div class="rail-footer">
+        <div class="source-note"><span class="source-dot"></span><span>Source-led<br />learning</span></div>
+        <button class="icon-button" id="resetButton" title="Restart journey" aria-label="Restart journey">↻</button>
+      </div>
+    </aside>
+
+    <main class="main-stage">
+      <header class="topbar">
+        <div class="breadcrumb"><span id="breadcrumbKicker">ORIENTATION</span><span class="breadcrumb-slash">/</span><span id="breadcrumbTitle">Start from zero</span></div>
+        <div class="status-cluster">
+          <div class="stat-chip"><span class="stat-icon">✦</span><span id="scoreValue">000</span><small>POINTS</small></div>
+          <div class="lives" aria-label="Lives remaining"><span id="lifeOne">♥</span><span id="lifeTwo">♥</span><span id="lifeThree">♥</span></div>
+          <div class="avatar">JS</div>
+        </div>
+      </header>
+
+      <div class="content-wrap">
+        <div class="progress-line"><span id="progressFill"></span></div>
+        <section id="screen" class="screen" aria-live="polite"></section>
+      </div>
+    </main>
+  </div>
+  <script src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(() => console.log("Service Worker registered"))
+      .catch(error => console.log("Service Worker error:", error));
+  });
+}
+</script>
+</body>
+</html>
